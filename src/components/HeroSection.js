@@ -1,1 +1,0 @@
-//: The hero/banner section displaying featured movies or promotions.

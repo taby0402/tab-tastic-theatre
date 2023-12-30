@@ -1,1 +1,0 @@
-//confirms the ticket purchase
