@@ -1,0 +1,1 @@
+// Includes the footer section with contact information, social media links, etc.

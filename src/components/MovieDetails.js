@@ -1,0 +1,1 @@
+//Shows detailed information about a specific movie (title, synopsis, rating, trailer, etc.).

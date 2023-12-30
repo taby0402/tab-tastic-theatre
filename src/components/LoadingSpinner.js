@@ -1,0 +1,1 @@
+//Shows a loading spinner during data fetching or transitions.
