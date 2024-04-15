@@ -28,35 +28,90 @@ const PaymentButton = styled.button`
 `;
 
 const PaymentForm = () => {
-    const [formData, setFormData] = useState({
-        cardNumber: '',
-        // Add other form fields here
-    });
+    const [cardNumber, setCardNumber] = useState('');
+    const [expiryDate, setExpiryDate] = useState('');
+    const [cvv, setCvv] = useState('');
+    const [paymentResponse, setPaymentResponse] = useState(null);
 
-    const handleInputChange = (e) => {
-        const { name, value } = e.target;
-        setFormData({ ...formData, [name]: value });
+    // Function to fetch payment data on component mount (GET request)
+    useEffect(() => {
+        fetch('http://localhost:3001/payments/1') // Replace with your endpoint
+            .then((response) => response.json())
+            .then((data) => {
+                setPaymentResponse(data);
+            })
+            .catch((error) => {
+                console.error('Error fetching payment data:', error);
+            });
+    }, []);
+
+    const handleCardNumberChange = (e) => {
+        setCardNumber(e.target.value);
+    };
+
+    const handleExpiryDateChange = (e) => {
+        setExpiryDate(e.target.value);
+    };
+
+    const handleCvvChange = (e) => {
+        setCvv(e.target.value);
     };
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        // Handle form submission
-        console.log(formData); // Replace with form submission logic
+
+        const paymentData = {
+            cardNumber,
+            expiryDate,
+            cvv,
+        };
+
+        // Send POST request to the json-server API
+        fetch('http://localhost:3001/payments', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(paymentData),
+        })
+            .then((response) => response.json())
+            .then((data) => {
+                console.log('Payment successful:', data);
+                setPaymentResponse(data);
+            })
+            .catch((error) => {
+                console.error('Error making payment:', error);
+            });
     };
 
     return (
-        <FormWrapper onSubmit={handleSubmit}>
-            <InputField
-                type="text"
-                name="cardNumber"
-                placeholder="Card Number"
-                value={formData.cardNumber}
-                onChange={handleInputChange}
-            />
-            {/* Other form input fields */}
-            <PaymentButton type="submit">Pay Now</PaymentButton>
-        </FormWrapper>
+        <div>
+            <h2>Make Payment</h2>
+            <form onSubmit={handleSubmit}>
+                <label>
+                    Card Number:
+                    <input type="text" value={cardNumber} onChange={handleCardNumberChange} />
+                </label>
+                <label>
+                    Expiry Date:
+                    <input type="text" value={expiryDate} onChange={handleExpiryDateChange} />
+                </label>
+                <label>
+                    CVV:
+                    <input type="text" value={cvv} onChange={handleCvvChange} />
+                </label>
+                <button type="submit">Pay Now</button>
+            </form>
+
+            {/* Display payment response */}
+            {paymentResponse && (
+                <div>
+                    <h3>Payment Response:</h3>
+                    <pre>{JSON.stringify(paymentResponse, null, 2)}</pre>
+                </div>
+            )}
+        </div>
     );
-}
+};
 
 export default PaymentForm;
