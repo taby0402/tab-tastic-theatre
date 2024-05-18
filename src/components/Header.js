@@ -1,15 +1,12 @@
+// src/components/Header.js
 import React from 'react';
-import styles from './Header.module.css';
 
 const Header = () => {
     return (
-        <header className={styles.header}>
-            <div className={styles.logo}>Tab Tastic Theatre</div>
-            <nav className={styles.nav}>
-                {/* Navigation links */}
-            </nav>
+        <header className="App-header">
+            <h1>Movie Theatre</h1>
         </header>
     );
-}
+};
 
 export default Header;

@@ -1,17 +1,15 @@
-// Displays a list of movies or showtimes.
+// src/components/MovieList.js
 import React from 'react';
-import styles from './MovieList.module.css';
+import Movie from './Movie';
 
 const MovieList = ({ movies }) => {
     return (
-        <div className={styles.movieList}>
-            {movies.map(movie => (
-                <div key={movie.id} className={styles.movieCard}>
-                    {/* Movie card content */}
-                </div>
+        <main>
+            {movies.map((movie, index) => (
+                <Movie key={index} movie={movie} />
             ))}
-        </div>
+        </main>
     );
-}
+};
 
 export default MovieList;

@@ -1,39 +1,12 @@
-// Includes the footer section with contact information, social media links, etc.
-// Footer.js
+// src/components/Footer.js
 import React from 'react';
-import styled from 'styled-components';
-
-const FooterWrapper = styled.footer`
-  background-color: #333;
-  color: #fff;
-  padding: 20px;
-  /* Other footer styles */
-`;
-
-const FooterContent = styled.div`
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  /* Footer content styles */
-`;
-
-const SocialLinks = styled.div`
-  display: flex;
-  gap: 10px;
-  /* Social links styles */
-`;
 
 const Footer = () => {
-    return (
-        <FooterWrapper>
-            <FooterContent>
-                {/* Footer content */}
-                <SocialLinks>
-                    {/* Social links */}
-                </SocialLinks>
-            </FooterContent>
-        </FooterWrapper>
-    );
-}
+  return (
+    <footer className="App-footer">
+      <p>&copy; 2024 Movie Theatre. All rights reserved.</p>
+    </footer>
+  );
+};
 
 export default Footer;
