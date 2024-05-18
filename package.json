@@ -1,0 +1,25 @@
+{
+  "name": "tab-tastic-theatre",
+  "version": "1.0.0",
+  "description": "Welcome to Tab Tastic Theatres, a single-page application (SPA) built with React. This app allows users to view a list of movies, learn more about our theatre, and add new movies to the list. The app uses `json-server` to mock a backend API for storing movie data.",
+  "main": "index.js",
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject",
+    "server": "json-server --watch db.json --port 5000",
+    "dev": "concurrently \"npm run server\" \"npm start\""
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/taby0402/tab-tastic-theatre.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/taby0402/tab-tastic-theatre/issues"
+  },
+  "homepage": "https://github.com/taby0402/tab-tastic-theatre#readme"
+}
