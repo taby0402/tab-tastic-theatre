@@ -1,14 +1,30 @@
-// src/components/MovieList.js
-import React from 'react';
-import Movie from './Movie';
+// src/components/MoviesList.js
 
-const MovieList = ({ movies }) => {
+import React, { useEffect, useState } from 'react';
+import axios from 'axios';
+
+const MovieList = () => {
+    const [movies, setMovies] = useState([]);
+    console.log(MovieList)
+
+    useEffect(() => {
+        axios.get('http://localhost:5000/movies')
+            .then(response => setMovies(response.data))
+            .catch(error => console.error('Error fetching movies:', error));
+    }, []);
+
     return (
-        <main>
-            {movies.map((movie, index) => (
-                <Movie key={index} movie={movie} />
-            ))}
-        </main>
+        <div>
+            <h2>Movie List</h2>
+            <ul>
+                {movies.map(movie => (
+                    <li key={movie.id}>
+                        <h3>{movie.title}</h3>
+                        <p>{movie.description}</p>
+                    </li>
+                ))}
+            </ul>
+        </div>
     );
 };
 

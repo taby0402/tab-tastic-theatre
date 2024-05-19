@@ -4,7 +4,7 @@ import React from 'react';
 const Home = () => {
     return (
         <div>
-            <h2>Welcome to the Movie Theatre</h2>
+            <h2>Welcome to Tab Tastic Theatre</h2>
             <p>Enjoy the latest movies in our theatre.</p>
         </div>
     );

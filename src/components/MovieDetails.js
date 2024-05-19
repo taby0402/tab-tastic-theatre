@@ -1,7 +1,7 @@
 // src/components/Movie.js
 import React from 'react';
 
-const Movie = ({ movie }) => {
+const MovieDetails = ({ movie }) => {
   return (
     <div className="movie">
       <h2>{movie.title}</h2>
